@@ -1,0 +1,22 @@
+<script>
+    var a = +prompt("Введите первое число");
+    var b = +prompt("Введите второе число");
+    var operation = prompt("Какую арифметическую опрецию необходимо выполнить? \n(Введите необходимое обозначение: +  -  *  / )");
+    function mathOperation(a, b, operation) {
+        switch(operation) {
+            case "+":
+                return a + b;
+                break;
+            case "-":
+                return a - b;
+                break;
+            case "*":
+                return a * b;
+                break;
+            case "/":
+                return a / b;
+                break;
+        }
+    }
+    alert(a + operation + b + "=" + mathOperation(a, b, operation));
+</script>
