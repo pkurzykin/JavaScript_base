@@ -1,0 +1,19 @@
+<script>
+
+  function countBasket() {
+      var goods = [
+    {title: "Рубашка", price: 1200},
+    {title: "Брюки", price: 1500},
+    {title: "Джемпер", price: 2300},
+    {title: "Галстук", price: 900},
+    {title: "Ремень", price: 800},
+  ];
+  var summ = 0;
+    for(var item of goods){
+        summ = summ + item.price;
+      }
+    return summ;
+  }
+ document.write("Итого: " + countBasket());
+
+</script>
