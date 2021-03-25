@@ -1,0 +1,23 @@
+<script>
+    var obj = {};
+    var userNumber = +prompt('Введите число от 0 до 999');
+
+    function objectNumber() {
+            if (userNumber < 0 || userNumber > 1000) {
+                console.log('ошибка');
+                return obj = {};
+            } else {
+                obj.h = Math.trunc(userNumber / 100);
+                obj.des = Math.trunc((userNumber % 100) / 10); 
+                obj.ed = userNumber % 10;
+                
+                alert('Сотни: ' + obj.h + "\n" + 'Десятки: ' + obj.des + "\n" + 'Единицы: ' + obj.ed);
+            }
+        
+    }
+    
+    objectNumber();
+
+    console.log(obj);
+    
+</script>
