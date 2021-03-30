@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chessboard</title>
+</head>
+<body>
+    <main class="chessboard">
+             
+    </main>
+</body>
+    <script>
+        var cellsName = ['','A','B','C','D','E','F','G','H',''],
+            cellsNumber = ['','8','7','6','5','4','3','2','1',''],
+            blackFigures = ['','&#9820;','&#9822;','&#9821;','&#9819;','&#9818;','&#9821;','&#9822;','&#9820;'],
+            whiteFigures = ['','&#9814;','&#9816;','&#9815;','&#9813;','&#9812;','&#9815;','&#9816;','&#9814;'],
+            blackPawns = ['','&#9823;','&#9823;','&#9823;','&#9823;','&#9823;','&#9823;','&#9823;','&#9823;'],
+            whitePawns = ['','&#9817;','&#9817;','&#9817;','&#9817;','&#9817;','&#9817;','&#9817;','&#9817;'],
+            cells,
+            i, j
+
+        var chessBoard = document.querySelector('main');
+
+        for (i = 0; i < 10; i++) {
+            cells = document.createElement("div");
+            
+             for (j = 0; j < 10; j++) {
+                cells = document.createElement("div");
+                cells.classList.add("cells-position");
+                chessBoard.append(cells);
+                
+                if (i % 2 == j % 2) {
+                    cells.classList.add("black");
+                } else {
+                    cells.classList.add("grey");
+                }
+                  
+                    if (i == 0 && j < 10) {
+                        cells.innerText = cellsName[j];
+                        cells.classList.remove("black");
+                        cells.classList.add("white");
+                        cells.style.transform = 'rotate(180deg)';
+                    }
+                    if (i == 9 && j < 10) {
+                        cells.innerText = cellsName[j];
+                        cells.classList.remove("black");
+                        cells.classList.add("white");
+                    }
+                    if (i >= 0 && j == 0) {
+                        cells.innerText = cellsNumber[i];
+                        cells.classList.remove("black");
+                        cells.classList.add("white"); 
+                    }
+                    if (i < 10 && j == 9) {
+                        cells.innerText = cellsNumber[i];
+                        cells.classList.remove("black");
+                        cells.classList.add("white");
+                        cells.style.transform = 'rotate(180deg)';
+                    }
+                    if (i == 1 && j < 9 && j != 0) {
+                        cells.innerHTML = whiteFigures[j];
+                        cells.style.fontSize = '35px';
+                    }
+                    if (i == 2 && j < 9 && j != 0) {
+                        cells.innerHTML = whitePawns[j];
+                        cells.style.fontSize = '35px';
+                    }
+                    if (i == 7 && j < 9 && j != 0) {
+                        cells.innerHTML = blackPawns[j];
+                        cells.style.fontSize = '35px';
+                    }
+                    if (i == 8 && j < 9 && j != 0) {
+                        cells.innerHTML = blackFigures[j];
+                        cells.style.fontSize = '35px';
+                    }
+                    
+                                            
+             }
+             
+        }
+        
+           
+       
+    </script>
+</html>
