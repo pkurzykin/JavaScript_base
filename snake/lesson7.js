@@ -68,6 +68,7 @@ function startGame() {
 
   snake_timer = setInterval(move, SNAKE_SPEED); //каждые 200мс запускаем функцию move
   setTimeout(createFood, 5000);
+  bomb_timer = setInterval(createBomb, 10000);
 }
 
 /**
@@ -194,6 +195,10 @@ function haveFood(unit) {
     var currentScore = document.querySelector("span");
     currentScore.innerText = "Текущий счёт: " + score;
   }
+
+  if (unit_classes.includes("bomb-unit")) {
+    finishTheGame();
+  }
   return check;
 }
 
@@ -223,6 +228,33 @@ function createFood() {
 
       food_cell.setAttribute("class", classes + "food-unit");
       foodCreated = true;
+    }
+  }
+}
+
+function createBomb() {
+  var bombCreated = false;
+
+  while (!bombCreated) {
+    //пока еду не создали
+    // рандом
+    var bomb_x = Math.floor(Math.random() * FIELD_SIZE_X);
+    var bomb_y = Math.floor(Math.random() * FIELD_SIZE_Y);
+
+    var bomb_cell = document.getElementsByClassName(
+      "cell-" + bomb_y + "-" + bomb_x
+    )[0];
+    var bomb_cell_classes = bomb_cell.getAttribute("class").split(" ");
+
+    // проверка на змейку
+    if (!bomb_cell_classes.includes("snake-unit")) {
+      var classes = "";
+      for (var i = 0; i < bomb_cell_classes.length; i++) {
+        classes += bomb_cell_classes[i] + " ";
+      }
+
+      bomb_cell.setAttribute("class", classes + "bomb-unit");
+      bombCreated = true;
     }
   }
 }
@@ -263,6 +295,7 @@ function changeDirection(e) {
 function finishTheGame() {
   gameIsRunning = false;
   clearInterval(snake_timer);
+  clearInterval(bomb_timer);
   alert("Вы проиграли! Ваш результат: " + score.toString());
 }
 
